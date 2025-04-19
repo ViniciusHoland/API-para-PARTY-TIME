@@ -1,3 +1,11 @@
 import Service from './models/Service'
 
-const serviceController
+const serviceController = {
+
+
+
+
+}
+
+
+module.exports = serviceController
