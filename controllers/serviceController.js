@@ -46,12 +46,42 @@ const serviceController = {
 
             const serviceId = req.params.idService
 
-            const response = await Service.findById(serviceId)
+            const service = await Service.findById(serviceId)
 
-            res.status(200).json({msg: "sucesso ao buscar servico do usuario", response})
+            if(!service){
+                res.status(404).json({msg: "servico nao encontrado"})
+                return
+            }
+
+            res.status(200).json({msg: "sucesso ao buscar servico do usuario", service})
 
         } catch (error) {
             console.log("erro ao buscar servico")
+        }
+
+
+    },
+
+    deleteService: async(req,res) => {
+
+
+        try{
+
+            const serviceId = req.params.idService
+
+            const service = await Service.findById(serviceId)
+
+            if(!service){
+                res.status(404).json({msg: "servico nao encontrado"})
+                return
+            }
+
+            await Service.deleteOne(service)
+
+            res.status(200).json({msg: "servico deletado com sucesso", service})
+
+        } catch (error) {
+            console.log("erro ao deletar servico")
         }
 
 
