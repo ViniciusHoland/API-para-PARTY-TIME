@@ -1,5 +1,5 @@
 import { Router } from "express";
-import servicesRouter from './services'
+import servicesRouter from './services.js'
 
 
 const router = Router()
@@ -7,4 +7,4 @@ const router = Router()
 router.use("/", servicesRouter)
 
 
-module.exports = router
+export default router
