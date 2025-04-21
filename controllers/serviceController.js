@@ -31,12 +31,30 @@ const serviceController = {
 
             const response = await Service.find()
 
-            res.status(200).json({msg: "successo ao buscar servicos", response})
+            res.status(200).json({msg: "successo ao buscar todos servicos", response})
 
 
         } catch (error) {
             console.log("erro ao buscar todos os servicos", error)
         }
+    },
+    
+    getServiceById: async(req,res) => {
+
+
+        try{
+
+            const serviceId = req.params.idService
+
+            const response = await Service.findById(serviceId)
+
+            res.status(200).json({msg: "sucesso ao buscar servico do usuario", response})
+
+        } catch (error) {
+            console.log("erro ao buscar servico")
+        }
+
+
     }
 
 
