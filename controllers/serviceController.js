@@ -85,6 +85,32 @@ const serviceController = {
         }
 
 
+    },
+    updateService: async (req,res) => {
+
+
+
+        try{
+
+            const serviceId = req.params.idService
+
+            const service = await Service.findById(serviceId)
+
+            if(!service){
+                res.status(404).json({msg: "servico nao encontrado"})
+                return
+            }
+
+            const newService= req.body
+
+            const updateService = await Service.updateOne({ _id: serviceId}, newService)
+
+            res.status(200).json({msg: "servico atualizado com sucesso", updateService})
+
+        } catch (error) {
+            console.log("erro ao atualizar servico")
+        }
+
     }
 
 
