@@ -101,11 +101,16 @@ const serviceController = {
                 return
             }
 
-            const newService= req.body
+            const newService=  {
+                name : req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                image: req.body.image,
+            }
 
-            const updateService = await Service.updateOne({ _id: serviceId}, newService)
+            const updateService = await Service.findByIdAndUpdate(serviceId, newService)
 
-            res.status(200).json({msg: "servico atualizado com sucesso", updateService})
+            res.status(200).json({msg: "servico atualizado com sucesso", newService})
 
         } catch (error) {
             console.log("erro ao atualizar servico")
