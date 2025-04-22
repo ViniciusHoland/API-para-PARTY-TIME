@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import serviceSchema from  '/Service.js'
+import {serviceSchema} from  './Service.js'
 
 const { Schema }= mongoose
 
@@ -13,10 +13,15 @@ const partySchema = new Schema({
         type: String,
         required: true
     },
+    author: {
+        type: String,
+        required: true
+    },
     budget: {
         type: Number,
         required: true
     },
+
     image: {
         type: String,
         required: true
@@ -29,7 +34,7 @@ const partySchema = new Schema({
 
 const Party = mongoose.model("Party", partySchema)
 
-export default {
+export {
     Party,
     partySchema
 }

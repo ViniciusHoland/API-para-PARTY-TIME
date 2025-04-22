@@ -1,7 +1,5 @@
-import  ServiceModule  from '../models/Service.js'
+import  {Service}  from '../models/Service.js'
 
-
-const { Service } = ServiceModule
 
 const serviceController = {
 
